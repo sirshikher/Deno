@@ -1,33 +1,26 @@
 {
-    "$schema": "https://deno.land/x/denon/schema.json",
-    "scripts": {
-      "run": {
-        "cmd": "simple.ts",
-        "desc": "Run main app",
-        "allow": [
-          "env"
-        ]
-      },
-      "oak": {
-        "cmd": "oak.ts",
-        "desc": "Run oak instance",
-        "allow": [
-          "env",
-          "net"
-        ],
-        "env": {
-          "PORT": "9001"
-        }
-      }
-    },
-    "logger": {
-      "debug": true
-    },
-    "watcher": {
-      "exts": ["ts", "json", "ini"],
-      "skip": ["super_duper_secret/*"]
-    },
-    "env": {
-      "SECRET_ENV_VARIABLE": "shh!"
+  "$schema": "https://deno.land/x/denon/schema.json",
+  "scripts": {
+    "start": {
+      "cmd": "main.ts",
+      "desc": "Run main app",
+      "allow": [
+        "net",
+        "read",
+        "write",
+        "plugin"
+      ],
+      "unstable": true
     }
+  },
+  "logger": {
+    "debug": true
+  },
+  "execute": {
+    "ts": ["deno", "run"]
+  },
+  "watcher": {
+    "exts": ["ts", "json", "ini"],
+    "skip": ["super_duper_secret/*"]
   }
+}
